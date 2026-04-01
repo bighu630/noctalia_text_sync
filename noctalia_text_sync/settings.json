@@ -1,7 +1,7 @@
 {
   "filePath": "/dev/shm/lyrics",
   "refreshInterval": 500,
-  "textColor": "secondary",
+  "textColor": "primary",
   "fontFamily": "",
-  "maxWidth": 8
+  "maxWidth": 300
 }

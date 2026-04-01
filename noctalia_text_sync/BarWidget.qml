@@ -25,7 +25,7 @@ Item {
     readonly property string textColorKey:    cfg.textColor       ?? defaults.textColor       ?? "none"
     readonly property color  textColor:       Color.resolveColorKey(textColorKey)
     readonly property string fontFamily:      cfg.fontFamily      ?? defaults.fontFamily      ?? ""
-    readonly property int    maxWidth:        parseInt(cfg.maxWidth ?? defaults.maxWidth ?? 30)
+    readonly property int    maxWidth:        parseInt(cfg.maxWidth ?? defaults.maxWidth ?? 200)
 
     // ── Screen / style helpers ─────────────────────────────────────────────
     readonly property string screenName:    screen ? screen.name : ""
@@ -36,18 +36,18 @@ Item {
     property string displayText: ""
 
     // ── Scroll logic ───────────────────────────────────────────────────────
-    readonly property bool shouldScroll: maxWidth > 0 && displayText.length > maxWidth
-
-    // Measure pixel width of the first maxWidth characters to size the visible window
+    // Measure pixel width of full text to determine if scrolling is needed
     TextMetrics {
-        id: maxWidthMetrics
+        id: fullTextMetrics
         font.pointSize: root.barFontSize
         font.family:    root.fontFamily !== "" ? root.fontFamily : font.family
-        text: root.shouldScroll ? root.displayText.substring(0, root.maxWidth) : ""
+        text: root.displayText
     }
 
+    readonly property bool shouldScroll: maxWidth > 0 && fullTextMetrics.advanceWidth > maxWidth
+
     readonly property real contentContainerWidth: root.shouldScroll
-        ? maxWidthMetrics.advanceWidth
+        ? maxWidth
         : textDisplay.implicitWidth
 
     // ── Widget geometry ────────────────────────────────────────────────────
@@ -135,7 +135,6 @@ Item {
                 SequentialAnimation {
                     id: scrollAnimation
                     running: root.shouldScroll && root.displayText !== ""
-                    loops: Animation.Infinite
 
                     PauseAnimation { duration: 1500 }
                     NumberAnimation {
@@ -145,12 +144,6 @@ Item {
                         to:   -(textDisplay.implicitWidth - root.contentContainerWidth)
                         duration: Math.max(0, textDisplay.implicitWidth - root.contentContainerWidth) * 15
                         easing.type: Easing.Linear
-                    }
-                    PauseAnimation { duration: 1500 }
-                    PropertyAction {
-                        target:   textDisplay
-                        property: "x"
-                        value:    0
                     }
                 }
             }
