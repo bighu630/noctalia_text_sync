@@ -4,7 +4,7 @@
     {
       "id": "text-sync",
       "name": "Text Sync",
-      "version": "1.0.1",
+      "version": "1.0.0",
       "official": false,
       "author": "Bighu630",
       "description": "Displays text from a file in the status bar with configurable refresh rate, font, color, and max width.",
@@ -19,7 +19,7 @@
     {
       "id": "screen-recorder",
       "name": "Screen Recorder",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "official": false,
       "author": "Bighu630",
       "description": "Screen recording plugin powered by gpu-screen-recorder with audio, quality presets, and portal-based region selection.",
