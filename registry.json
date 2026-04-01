@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "plugins": [
+    {
+      "id": "text-sync",
+      "name": "Text Sync",
+      "version": "1.0.0",
+      "official": false,
+      "author": "Bighu630",
+      "description": "Displays text from a file in the status bar with configurable refresh rate, font, color, and max width.",
+      "repository": "https://github.com/bighu630/noctalia-plugins",
+      "license": "MIT",
+      "tags": [
+        "Bar",
+        "Utility"
+      ],
+      "lastUpdated": "2026-02-04T23:08:01-07:00"
+    },
+    {
+      "id": "screen-recorder",
+      "name": "Screen Recorder",
+      "version": "1.0.0",
+      "official": false,
+      "author": "Bighu630",
+      "description": "Screen recording plugin powered by gpu-screen-recorder with audio, quality presets, and portal-based region selection.",
+      "repository": "https://github.com/bighu630/noctalia-plugins",
+      "license": "MIT",
+      "tags": [
+        "Bar",
+        "Panel",
+        "Utility"
+      ],
+      "lastUpdated": "2026-02-04T23:08:01-07:00"
+    }
+  ]
+}
